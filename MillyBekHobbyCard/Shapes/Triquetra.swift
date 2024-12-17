@@ -20,10 +20,18 @@ struct Triquetra: Shape {
 //        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
         path.addQuadCurve(
             to: CGPoint(x: rect.maxX, y: rect.maxY),
-            control: CGPoint(x: rect.maxX, y: rect.maxY * 0.5)
+            control: CGPoint(x: rect.midX, y: rect.maxY * 0.5)
         )
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
+//        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+        path.addQuadCurve(
+            to: CGPoint(x: rect.minX, y: rect.maxY),
+            control: CGPoint(x: rect.midX, y: rect.maxY * 0.5)
+        )
+//        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addQuadCurve(
+            to: CGPoint(x: rect.midX, y: rect.minY),
+            control: CGPoint(x: rect.midX, y: rect.maxY * 0.5)
+        )
 
         // Return the path
         return path
